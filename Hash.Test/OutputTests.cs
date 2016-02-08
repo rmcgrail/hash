@@ -64,8 +64,11 @@ namespace Hash.Test
         [TestMethod]
         public void Error_Message_Exception() {
             new Output().Error("An amazing error message", new Exception("Exception's message"));
-
+#if DEBUG
             Assert.IsTrue(writerOutput.StartsWith("[ ERROR ] An amazing error message; System.Exception: Exception's message"));
+#else
+            Assert.IsTrue(writerOutput.StartsWith("[ ERROR ] An amazing error message; Exception's message"));
+#endif
         }
 
         [TestMethod]
