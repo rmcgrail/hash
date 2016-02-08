@@ -19,7 +19,7 @@ namespace Hash
             }
         }
 
-        private string FromFile(string filePath, HashAlgorithm algorithm) {
+        internal string FromFile(string filePath, HashAlgorithm algorithm) {
             byte[] bytes = algorithm.ComputeHash(File.ReadAllBytes(filePath));
 
             string result = "";

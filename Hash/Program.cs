@@ -7,16 +7,16 @@ namespace Hash
         private static readonly Hasher hash = new Hasher();
         private static readonly Output output = new Output();
 
-        public static bool     ShowHelp  { get; private set; }
-        public static bool     FileFirst { get; private set; }
-        public static string   FilePath  { get; private set; }
-        public static HashType HashType  { get; private set; }
+        public static bool     ShowHelp  { get; internal set; }
+        public static bool     FileFirst { get; internal set; }
+        public static string   FilePath  { get; internal set; }
+        public static HashType HashType  { get; internal set; }
 
         static Program() {
-            FilePath  = "";
-            ShowHelp  = false;
+            FilePath = "";
+            ShowHelp = false;
             FileFirst = false;
-            HashType  = HashType.Sha1;
+            HashType = HashType.Sha1;
         }
 
         static void Main(string[] args) {
@@ -35,7 +35,7 @@ namespace Hash
             }
         }
 
-        private static void ProcessArgs(string[] args) {
+        internal static void ProcessArgs(string[] args) {
             switch (args.Length) {
                 case 0:
                     throw new ApplicationException("No input parameters.");
@@ -48,7 +48,7 @@ namespace Hash
             }
         }
 
-        private static void ProcessEachArg(string[] args) {
+        internal static void ProcessEachArg(string[] args) {
             foreach (var a in args) {
                 var arg = a.Trim();
                 if (string.IsNullOrWhiteSpace(arg))
@@ -57,7 +57,7 @@ namespace Hash
             }
         }
 
-        private static void ProcessSetting(string arg) {
+        internal static void ProcessSetting(string arg) {
             switch (arg.ToLower()) {
                 case "/?":
                 case "-h":
